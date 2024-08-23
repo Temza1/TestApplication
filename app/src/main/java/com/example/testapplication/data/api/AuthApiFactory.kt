@@ -1,4 +1,4 @@
-package com.example.testapplication.data
+package com.example.testapplication.data.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -8,15 +8,14 @@ class AuthApiFactory {
 
         private const val BASE_URL = "https://plannerok.ru/api/v1/users"
 
-        fun create() : AuthApiService {
+        fun create(): AuthApiService {
 
-            val retrofit : Retrofit = Retrofit.Builder()
+            val retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
             return retrofit.create(AuthApiService::class.java)
         }
-
     }
 }

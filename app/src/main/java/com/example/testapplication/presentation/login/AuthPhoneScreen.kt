@@ -1,10 +1,12 @@
 package com.example.testapplication.presentation.login
 
 import android.widget.Toast
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -13,12 +15,15 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -42,85 +47,85 @@ import com.example.testapplication.presentation.ChatListViewModel
 import com.example.testapplication.presentation.MaskVisualTransformation
 import com.example.testapplication.ui.theme.TestApplicationTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.testapplication.R
 import com.example.testapplication.presentation.ChatListScreenContract
+import dagger.hilt.android.AndroidEntryPoint
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AuthPhoneScreen(
-    startAuthCodeCheckScreen:() -> Unit,
-    viewModel : ChatListViewModel = viewModel(),
+    modifier: Modifier = Modifier,
+    startAuthCodeCheckScreen: () -> Unit,
+    viewModel: ChatListViewModel = viewModel()
 ) {
-    AuthPhoneScreenContent(modifier = Modifier,viewModel,startAuthCodeCheckScreen)
+    val state by viewModel.state.collectAsState()
+    AuthPhoneScreenContent(modifier, state, startAuthCodeCheckScreen)
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AuthPhoneScreenContent(
     modifier: Modifier = Modifier,
-    viewModel : ChatListViewModel,
-    startAuthCodeCheckScreen:() -> Unit
+    state: ChatListScreenContract.State,
+    startAuthCodeCheckScreen: () -> Unit,
 ) {
-    val state by viewModel.state.collectAsState()
-    var phone by remember{ mutableStateOf("") }
+    var phone by remember { mutableStateOf("") }
     val mask = MaskVisualTransformation("+7 (___) ___-__-__")
 
-    if(state.isAuthPhoneSuccess) {
+    if (state.isAuthPhoneSuccess) {
         startAuthCodeCheckScreen()
     }
 
+
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(16.dp, 32.dp),
+        modifier = modifier
+            .fillMaxHeight(0.5f)
+            .padding(28.dp, 16.dp),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-
-
         Text(
-            "Телефон", fontSize = 38.sp
+            "Телефон", fontSize = 38.sp, textAlign = TextAlign.Center
         )
         Text(
             "Проверьте код страны и введите номер Вашего телефона",
             fontSize = 20.sp,
             textAlign = TextAlign.Center
         )
+    }
 
 
-        Column(
-            verticalArrangement = Arrangement.Center
-        ) {
-            ExposedDropdownMenuBox(modifier = modifier.padding(0.dp, 30.dp, 0.dp, 0.dp))
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .padding(28.dp, 16.dp)
+            .fillMaxHeight(0.5f),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.Center
+    ) {
 
-            TextField(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .height(74.dp)
-                    .padding(0.dp, 12.dp, 0.dp, 0.dp),
-                value = phone,
-                onValueChange = {
-                    phone = it.filter { it.isDigit() }
-                },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
-                placeholder = {
-                    Text(
-                        text = "+7 (___) ___ __ __",
-                        fontSize = 26.sp,
-                        fontWeight = FontWeight.Medium,
-                        color = Color.Gray
-                    )
-                },
-                visualTransformation = mask
-            )
-            Button(
-                modifier = modifier
-                    .fillMaxWidth()
-                    .height(80.dp)
-                    .padding(0.dp, 12.dp, 0.dp, 0.dp),
-                onClick = {
-                    ChatListScreenContract.Event.SendPhone(phone)
-                }) {
-                Text(text = "Продолжить",fontSize = 24.sp, fontWeight = FontWeight.Medium)
-            }
+        TextField(
+            modifier = modifier
+                .fillMaxWidth()
+                .height(74.dp)
+                .padding(0.dp, 12.dp, 0.dp, 0.dp),
+            value = phone,
+            onValueChange = {
+                phone = it
+            },
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+            visualTransformation = mask
+        )
+        Button(
+            modifier = modifier
+                .fillMaxWidth()
+                .height(80.dp)
+                .padding(0.dp, 12.dp, 0.dp, 0.dp),
+            onClick = {
+                ChatListScreenContract.Event.SendPhone(phone)
+            }) {
+            Text(text = "Продолжить", fontSize = 24.sp, fontWeight = FontWeight.Medium)
         }
 
     }
@@ -175,12 +180,12 @@ fun ExposedDropdownMenuBox(modifier: Modifier = Modifier) {
     }
 }
 
-
 @Preview(showBackground = true)
 @Composable
 fun AuthorizationScreenPreview() {
     TestApplicationTheme {
-        AuthPhoneScreen(
+        AuthPhoneScreenContent(
+            state = ChatListScreenContract.State(),
             startAuthCodeCheckScreen = {}
         )
     }

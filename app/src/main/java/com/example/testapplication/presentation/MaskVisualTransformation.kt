@@ -23,7 +23,7 @@ class MaskVisualTransformation(private val mask: String): VisualTransformation {
         return TransformedText(AnnotatedString(out), offsetTranslator())
     }
 
-    private fun offsetTranslator(): OffsetMapping = object: OffsetMapping {
+    private fun offsetTranslator(): OffsetMapping = object : OffsetMapping {
         override fun originalToTransformed(offset: Int): Int {
             val offsetValue = offset.absoluteValue
             if (offsetValue == 0) return 0
