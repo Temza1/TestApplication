@@ -1,5 +1,5 @@
 package com.example.testapplication.domain.model
 
-data class AuthPhone(
+data class Phone(
     val isSuccess: Boolean
 )

@@ -2,7 +2,7 @@ package com.example.testapplication.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class AuthPhoneDto(
+data class PhoneDto(
     @SerializedName("is_success")
     val isSuccess: Boolean
 )

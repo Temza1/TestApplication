@@ -4,46 +4,84 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.viewModels
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.example.testapplication.presentation.ChatListViewModel
-import com.example.testapplication.presentation.login.AuthCodeCheckScreen
-import com.example.testapplication.presentation.login.AuthPhoneScreen
+import androidx.navigation.navArgument
+import com.example.testapplication.navigation.DETAIL_ARGUMENT_KEY
+import com.example.testapplication.navigation.Screen
+import com.example.testapplication.presentation.authPhoneScreen.AuthPhoneScreenViewModel
+import com.example.testapplication.presentation.registrationScreen.RegistrationScreen
+import com.example.testapplication.presentation.authCodeCheckScreen.AuthCodeCheckScreen
+import com.example.testapplication.presentation.authCodeCheckScreen.AuthCodeCheckScreenViewModel
+import com.example.testapplication.presentation.authPhoneScreen.AuthPhoneScreen
+import com.example.testapplication.presentation.registrationScreen.RegScreenViewModel
 import com.example.testapplication.ui.theme.TestApplicationTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity: ComponentActivity() {
 
-    private val vm: ChatListViewModel by viewModels()
+    private val authPhoneScreenVM: AuthPhoneScreenViewModel by viewModels()
+    private val authCodeCheckScreenVM: AuthCodeCheckScreenViewModel by viewModels()
+    private val regScreenVM: RegScreenViewModel by viewModels()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
             val navController = rememberNavController()
-            NavHost(navController = navController, startDestination = "AuthPhoneScreen") {
-                composable("AuthPhoneScreen") {
+
+            NavHost(
+                navController = navController,
+                startDestination = Screen.AuthPhoneScreen.route
+            ) {
+                composable(route = Screen.AuthPhoneScreen.route) {
                     AuthPhoneScreen(
-                        viewModel = vm,
-                        startAuthCodeCheckScreen = { navController.navigate("AuthCodeCheckScreen") }
+                        viewModel = authPhoneScreenVM,
+                        navController = navController
                     )
                 }
-                composable("AuthCodeCheckScreen") {
-                    AuthCodeCheckScreen()
+                composable(
+                    route = Screen.AuthCodeCheckScreen.route,
+                    arguments = listOf(navArgument(DETAIL_ARGUMENT_KEY) {
+                        type = NavType.StringType
+                        nullable = true
+                    })
+                ) {
+                    val phone = it.arguments?.getString(DETAIL_ARGUMENT_KEY).default("null")
+                    AuthCodeCheckScreen(
+                        navController = navController,
+                        viewModel = authCodeCheckScreenVM,
+                        phone = phone
+                    )
                 }
-                composable("RegScreen") {}
-                composable("ChatListScreen") {}
-                composable("ProfileScreen") {}
+                composable(
+                    Screen.RegistrationScreen.route,
+                    arguments = listOf(navArgument(DETAIL_ARGUMENT_KEY) {
+                        type = NavType.StringType
+                        nullable = true
+                    })
+                ) {
+                    val phone = it.arguments?.getString(DETAIL_ARGUMENT_KEY).default("null")
+                    RegistrationScreen(
+                        viewModel = regScreenVM,
+                        phone = phone,
+                        navController = navController
+                    )
+                }
+                composable("chat_list_screen") {}
+                composable("profile_screen") {}
             }
         }
     }
+}
+
+fun <T> T?.default(default: T): T {
+    return this ?: default
 }
 
 

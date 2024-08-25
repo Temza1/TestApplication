@@ -1,6 +1,7 @@
 package com.example.testapplication.di
 
 import com.example.testapplication.data.mapper.AuthMapper
+import com.example.testapplication.data.repository.AuthRepositoryImpl
 import com.example.testapplication.domain.repository.AuthRepository
 import com.example.testapplication.domain.useCases.SendCodeUseCase
 import com.example.testapplication.domain.useCases.SendPhoneUseCase
@@ -14,12 +15,12 @@ import dagger.hilt.components.SingletonComponent
 class DomainModule {
 
     @Provides
-    fun provideSendPhone(authRepository: AuthRepository): SendPhoneUseCase {
+    fun provideSendPhone(authRepository: AuthRepositoryImpl): SendPhoneUseCase {
         return SendPhoneUseCase(authRepository)
     }
 
     @Provides
-    fun provideCheckCode(authRepository: AuthRepository): SendCodeUseCase {
+    fun provideCheckCode(authRepository: AuthRepositoryImpl): SendCodeUseCase {
         return SendCodeUseCase(authRepository)
     }
 

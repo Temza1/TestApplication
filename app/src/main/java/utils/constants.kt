@@ -1,3 +1,4 @@
 package utils
 
-const val CONST_NAME_PREFERENCE = "preferences"
+const val NAME_PREFERENCE = "preferences"
+const val BASE_URL = "https://plannerok.ru/"

@@ -1,18 +1,14 @@
-package com.example.testapplication.presentation
+package com.example.testapplication.presentation.authPhoneScreen
 
 import kotlinx.coroutines.flow.StateFlow
 
-interface ChatListScreenContract {
+interface AuthPhoneScreenContract {
     sealed class Event {
-        data object LoadUserInfo: Event()
         data class SendPhone(val phone: String): Event()
-        data class SendCode(val phone: String, val code: String): Event()
     }
 
     data class State(
         val isAuthPhoneSuccess: Boolean = false,
-        val isAuthorized: Boolean = false,
-        val isRegSuccess: Boolean = false
     )
 
     interface ViewModel {

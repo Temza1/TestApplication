@@ -1,5 +1,6 @@
-package com.example.testapplication.presentation.login
+package com.example.testapplication.presentation.authCodeCheckScreen
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -11,6 +12,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -18,19 +20,58 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
+import com.example.testapplication.navigation.Screen
+import com.example.testapplication.presentation.authPhoneScreen.AuthPhoneScreenContract
+import com.example.testapplication.presentation.authPhoneScreen.AuthPhoneScreenViewModel
 import com.example.testapplication.ui.theme.TestApplicationTheme
 
 @Composable
 fun AuthCodeCheckScreen(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    viewModel: AuthCodeCheckScreenViewModel = viewModel(),
+    phone : String,
+    navController: NavController
+) {
+    val state by viewModel.state.collectAsState()
+    AuthCodeCheckScreenContent(
+        modifier,
+        startRegScreen = {navController.navigate(route = Screen.RegistrationScreen.passPhone(it))},
+        startChatListScreen = {navController.navigate(route = Screen.AuthCodeCheckScreen.route)},
+        sendPhoneAndCode = {viewModel.sendEvent(AuthCodeCheckScreenContract.Event.SendCode(it.first,it.second))},
+        state,
+        phone)
+}
+
+@Composable
+fun AuthCodeCheckScreenContent(
+    modifier: Modifier = Modifier,
+    startRegScreen: (String) -> Unit,
+    startChatListScreen: () -> Unit,
+    sendPhoneAndCode:(Pair<String,String>) -> Unit,
+    state : AuthCodeCheckScreenContract.State,
+    phone : String
 ) {
     var code by remember { mutableStateOf("") }
+    var isButtonClicked by remember { mutableStateOf(false) }
+
+    if(isButtonClicked) {
+        if (state.isAuthorized) {
+            startChatListScreen()
+        } else {
+            startRegScreen(phone)
+        }
+        isButtonClicked = false
+    }
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -39,7 +80,7 @@ fun AuthCodeCheckScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            "Введите проверочный смс-код, присланный на номер +7 900 ___ __ 54",
+            "Введите проверочный смс-код, присланный на номер $phone",
             fontSize = 16.sp,
             textAlign = TextAlign.Center
         )
@@ -67,7 +108,10 @@ fun AuthCodeCheckScreen(
                 .fillMaxWidth()
                 .height(80.dp)
                 .padding(0.dp, 12.dp, 0.dp, 0.dp),
-            onClick = { /*TODO*/ }) {
+            onClick = {
+                sendPhoneAndCode(Pair(phone,code))
+                isButtonClicked = true
+            }) {
             Text(text = "Отправить")
         }
     }
@@ -77,6 +121,12 @@ fun AuthCodeCheckScreen(
 @Composable
 fun VerificationScreenPreview() {
     TestApplicationTheme {
-        AuthCodeCheckScreen()
+        AuthCodeCheckScreenContent(
+            startRegScreen = {},
+            startChatListScreen = {},
+            state = AuthCodeCheckScreenContract.State(),
+            phone = "",
+            sendPhoneAndCode = {}
+        )
     }
 }
