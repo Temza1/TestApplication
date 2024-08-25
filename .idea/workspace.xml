@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d0915f5-da05-44cd-b65e-b552a6a45d76" name="Changes" comment="перед доработкой хилта">
+    <list default="true" id="9d0915f5-da05-44cd-b65e-b552a6a45d76" name="Changes" comment="перед доработкой запроса и перехода на след экран">
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/CodeRequest.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/PhoneRequest.kt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/UsernameDto.kt" afterDir="false" />
@@ -382,7 +382,8 @@
     <MESSAGE value="перед доработкой авторизации" />
     <MESSAGE value="перед доработкой экрана,в котором проверка смс-кода" />
     <MESSAGE value="перед доработкой хилта" />
-    <option name="LAST_COMMIT_MESSAGE" value="перед доработкой хилта" />
+    <MESSAGE value="перед доработкой запроса и перехода на след экран" />
+    <option name="LAST_COMMIT_MESSAGE" value="перед доработкой запроса и перехода на след экран" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
