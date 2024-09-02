@@ -36,32 +36,21 @@ import com.example.testapplication.ui.theme.TestApplicationTheme
 @Composable
 fun RegistrationScreen(
     modifier: Modifier = Modifier,
-    viewModel: RegScreenViewModel = viewModel(),
-    phone : String,
-    navController : NavController
-) {
-    val state by viewModel.state.collectAsState()
-    RegScreenContent(
-        modifier,
-        state = state,
-        phone,
-        startAuthPhoneScreen = {navController.navigate(route = Screen.AuthPhoneScreen.route)},
-        sendUsername = {viewModel.sendEvent(RegScreenContract.Event.SendUsername(it.first,it.second,it.third))}
-    )
-}
-
-@Composable
-fun RegScreenContent(
-    modifier: Modifier = Modifier,
     state : RegScreenContract.State,
+    onEvent: (RegScreenContract.Event) -> Unit,
+    startAuthPhoneScreen: () -> Unit,
     phone : String,
-    startAuthPhoneScreen:() -> Unit,
-    sendUsername:(Triple<String,String,String>) -> Unit
+
 ) {
     var nickname by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
-    var isButtonClicked by remember { mutableStateOf(false) }
     val context = LocalContext.current
+
+    if(state.isRegSuccess) {
+        startAuthPhoneScreen()
+    } else {
+        Toast.makeText(context, "с сервера пришла ошибка", Toast.LENGTH_SHORT).show()
+    }
 
     Column(
         modifier = modifier
@@ -113,7 +102,7 @@ fun RegScreenContent(
                 .height(80.dp)
                 .padding(0.dp, 12.dp, 0.dp, 0.dp),
             onClick = {
-                Toast.makeText(context, "в разработке", Toast.LENGTH_SHORT).show()
+                onEvent(RegScreenContract.Event.SendUsername(phone,nickname,username))
             }) {
             Text(text = "Продолжить", fontSize = 24.sp, fontWeight = FontWeight.Medium)
         }
@@ -124,11 +113,11 @@ fun RegScreenContent(
 @Composable
 fun RegistrationScreenPreview() {
     TestApplicationTheme {
-        RegScreenContent(
+        RegistrationScreen(
             state = RegScreenContract.State(),
             phone = "",
             startAuthPhoneScreen = {},
-            sendUsername = {}
+            onEvent = {}
         )
     }
 }

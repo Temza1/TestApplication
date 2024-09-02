@@ -7,6 +7,7 @@ import com.example.testapplication.domain.useCases.SendCodeUseCase
 import com.example.testapplication.domain.useCases.SendPhoneUseCase
 import com.example.testapplication.domain.useCases.SendUsernameUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch

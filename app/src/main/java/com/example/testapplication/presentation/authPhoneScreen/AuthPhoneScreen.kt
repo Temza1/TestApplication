@@ -33,6 +33,7 @@ import com.example.testapplication.ui.theme.TestApplicationTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.testapplication.navigation.Screen
+import kotlinx.coroutines.flow.StateFlow
 import java.util.regex.Pattern
 
 
@@ -40,40 +41,25 @@ import java.util.regex.Pattern
 @Composable
 fun AuthPhoneScreen(
     modifier: Modifier = Modifier,
-    navController: NavController,
-    viewModel: AuthPhoneScreenViewModel = viewModel()
-) {
-    val state by viewModel.state.collectAsState()
-    AuthPhoneScreenContent(
-        modifier,
-        state,
-        startCheckCodeScreen = {
-            navController.navigate(
-                route = Screen.AuthCodeCheckScreen.passPhone(
-                    it
-                )
-            )
-        },
-        sendPhoneOnClick = { viewModel.sendEvent(AuthPhoneScreenContract.Event.SendPhone(it)) }
-    )
-
-}
-
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun AuthPhoneScreenContent(
-    modifier: Modifier = Modifier,
+    startCodeCheckScreen: (String) -> Unit,
     state: AuthPhoneScreenContract.State,
-    startCheckCodeScreen: (String) -> Unit,
-    sendPhoneOnClick: (String) -> Unit
+    onEvent: (AuthPhoneScreenContract.Event) -> Unit
 ) {
     var phone by remember { mutableStateOf("") }
+    var isButtonClicked by remember { mutableStateOf(false) }
     val regex = "([+]7)([0-9]{10})"
     val context = LocalContext.current
 
+
     if (state.isAuthPhoneSuccess) {
-        startCheckCodeScreen(phone)
+        startCodeCheckScreen(phone)
+    } else {
+        if(isButtonClicked) {
+            Toast.makeText(context, "с сервера пришла ошибка", Toast.LENGTH_SHORT).show()
+        }
+        isButtonClicked = false
     }
+
 
 
     Column(
@@ -112,7 +98,7 @@ fun AuthPhoneScreenContent(
             onValueChange = {
                 phone = it
             },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword)
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
         )
         Button(
             modifier = modifier
@@ -122,9 +108,11 @@ fun AuthPhoneScreenContent(
             onClick = {
                 if (phone.isNotEmpty()) {
                     if (Pattern.compile(regex).matcher(phone).matches()) {
-                        sendPhoneOnClick(phone)
+                        onEvent(AuthPhoneScreenContract.Event.SendPhone(phone))
+                        isButtonClicked = true
                     } else {
-                        Toast.makeText(context, "Номер введён некорректно", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "Номер введён некорректно", Toast.LENGTH_SHORT)
+                            .show()
                     }
                 } else {
                     Toast.makeText(context, "Введите номер телефона", Toast.LENGTH_SHORT).show()
@@ -134,16 +122,18 @@ fun AuthPhoneScreenContent(
         }
 
     }
+
 }
+
 
 @Preview(showBackground = true)
 @Composable
 fun AuthorizationScreenPreview() {
     TestApplicationTheme {
-        AuthPhoneScreenContent(
+        AuthPhoneScreen(
             state = AuthPhoneScreenContract.State(),
-            sendPhoneOnClick = {},
-            startCheckCodeScreen = {}
+            startCodeCheckScreen = {},
+            onEvent = {}
         )
     }
 }

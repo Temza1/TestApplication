@@ -10,44 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9d0915f5-da05-44cd-b65e-b552a6a45d76" name="Changes" comment="перед доработкой запроса и перехода на след экран">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/CodeRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/PhoneRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/UsernameDto.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/UsernameRequest.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/di/NetworkModule.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/model/Username.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/useCases/SendUsernameUseCase.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/navigation/Screen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreenContract.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreenViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreenViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegScreenContract.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegScreenViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/color/Colors.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/api/AuthApiFactory.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/api/AuthApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/api/AuthApiService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/mapper/AuthMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/mapper/AuthMapper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/AuthPhoneDto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/PhoneDto.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/TokenDto.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/TokenDto.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/repository/AuthRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/repository/AuthRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/di/DataModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/di/DataModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/di/DomainModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/di/DomainModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/model/AuthPhone.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/model/Phone.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/model/Token.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/model/Token.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/repository/AuthRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/repository/AuthRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/ChatListScreenContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreenContract.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/ChatListViewModel.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/MaskVisualTransformation.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/RegistrationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegistrationScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/activity/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/activity/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/login/AutCodeCheckScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/login/AuthPhoneScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreen.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/ui/theme/Color.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/ui/theme/Color.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreenViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreenViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreenViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreenViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegScreenViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegScreenViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegistrationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegistrationScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/ui/theme/Theme.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/ui/theme/Theme.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/utils/constants.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/utils/constants.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,24 +49,6 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="TestApplication" type="f1a62948:ProjectNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="TestApplication" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="TestApplication" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="TestApplication" type="f1a62948:ProjectNode" />
-                <item name="app" type="2d1252cf:ModuleNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="other" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -284,9 +237,7 @@
       <option name="ACTIVITY_CLASS" value="" />
       <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
       <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
-      <method v="2">
-        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
-      </method>
+      <method v="2" />
     </configuration>
     <configuration name="TestApplication" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -367,11 +318,43 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/feature_auth" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/feature_auth" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -387,6 +370,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegScreenViewModel.kt</url>
+          <line>35</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="java-exception">
           <dependency id="0" />

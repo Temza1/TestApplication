@@ -37,28 +37,11 @@ import com.example.testapplication.ui.theme.TestApplicationTheme
 @Composable
 fun AuthCodeCheckScreen(
     modifier: Modifier = Modifier,
-    viewModel: AuthCodeCheckScreenViewModel = viewModel(),
-    phone : String,
-    navController: NavController
-) {
-    val state by viewModel.state.collectAsState()
-    AuthCodeCheckScreenContent(
-        modifier,
-        startRegScreen = {navController.navigate(route = Screen.RegistrationScreen.passPhone(it))},
-        startChatListScreen = {navController.navigate(route = Screen.AuthCodeCheckScreen.route)},
-        sendPhoneAndCode = {viewModel.sendEvent(AuthCodeCheckScreenContract.Event.SendCode(it.first,it.second))},
-        state,
-        phone)
-}
-
-@Composable
-fun AuthCodeCheckScreenContent(
-    modifier: Modifier = Modifier,
     startRegScreen: (String) -> Unit,
     startChatListScreen: () -> Unit,
-    sendPhoneAndCode:(Pair<String,String>) -> Unit,
     state : AuthCodeCheckScreenContract.State,
-    phone : String
+    onEvent:(AuthCodeCheckScreenContract.Event) -> Unit,
+    phone : String,
 ) {
     var code by remember { mutableStateOf("") }
     var isButtonClicked by remember { mutableStateOf(false) }
@@ -93,7 +76,7 @@ fun AuthCodeCheckScreenContent(
             onValueChange = {
                 code = it.filter { it.isDigit() }
             },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Phone),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword),
             placeholder = {
                 Text(
                     text = "",
@@ -109,24 +92,25 @@ fun AuthCodeCheckScreenContent(
                 .height(80.dp)
                 .padding(0.dp, 12.dp, 0.dp, 0.dp),
             onClick = {
-                sendPhoneAndCode(Pair(phone,code))
+                onEvent(AuthCodeCheckScreenContract.Event.SendCode(phone, code))
                 isButtonClicked = true
             }) {
-            Text(text = "Отправить")
+            Text(text = "Отправить", fontSize = 24.sp, fontWeight = FontWeight.Medium)
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
 fun VerificationScreenPreview() {
     TestApplicationTheme {
-        AuthCodeCheckScreenContent(
+        AuthCodeCheckScreen(
             startRegScreen = {},
             startChatListScreen = {},
             state = AuthCodeCheckScreenContract.State(),
             phone = "",
-            sendPhoneAndCode = {}
+            onEvent = {}
         )
     }
 }
