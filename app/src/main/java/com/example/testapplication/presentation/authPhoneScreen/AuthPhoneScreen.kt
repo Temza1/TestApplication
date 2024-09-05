@@ -32,6 +32,10 @@ import androidx.compose.ui.unit.sp
 import com.example.testapplication.ui.theme.TestApplicationTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import com.arpitkatiyarprojects.countrypicker.CountryPicker
+import com.arpitkatiyarprojects.countrypicker.CountryPickerOutlinedTextField
+import com.arpitkatiyarprojects.countrypicker.models.CountryPickerProperties
+import com.arpitkatiyarprojects.countrypicker.utils.CountryPickerUtils
 import com.example.testapplication.navigation.Screen
 import java.util.regex.Pattern
 
@@ -68,6 +72,9 @@ fun AuthPhoneScreenContent(
     sendPhoneOnClick: (String) -> Unit
 ) {
     var phone by remember { mutableStateOf("") }
+    var countryCode by remember {
+        mutableStateOf("")
+    }
     val regex = "([+]7)([0-9]{10})"
     val context = LocalContext.current
 
@@ -103,17 +110,28 @@ fun AuthPhoneScreenContent(
         verticalArrangement = Arrangement.Center
     ) {
 
-        TextField(
-            modifier = modifier
-                .fillMaxWidth()
-                .height(74.dp)
-                .padding(0.dp, 12.dp, 0.dp, 0.dp),
-            value = phone,
-            onValueChange = {
-                phone = it
-            },
-            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword)
+        CountryPickerOutlinedTextField(
+            modifier = modifier.fillMaxWidth(),
+            mobileNumber = phone,
+            onMobileNumberChange = {phone = it},
+            onCountrySelected = {countryCode = it.countryPhoneNumberCode},
+            countryPickerProperties = CountryPickerProperties(
+                showCountryFlag = true,
+                showCountryPhoneCode = true
+            ),
+            defaultCountryCode = "RU"
         )
+//        TextField(
+//            modifier = modifier
+//                .fillMaxWidth()
+//                .height(74.dp)
+//                .padding(0.dp, 12.dp, 0.dp, 0.dp),
+//            value = phone,
+//            onValueChange = {
+//                phone = it
+//            },
+//            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.NumberPassword)
+//        )
         Button(
             modifier = modifier
                 .fillMaxWidth()
@@ -121,7 +139,7 @@ fun AuthPhoneScreenContent(
                 .padding(0.dp, 12.dp, 0.dp, 0.dp),
             onClick = {
                 if (phone.isNotEmpty()) {
-                    if (Pattern.compile(regex).matcher(phone).matches()) {
+                    if (CountryPickerUtils.isMobileNumberValid (countryCode + phone)) {
                         sendPhoneOnClick(phone)
                     } else {
                         Toast.makeText(context, "Номер введён некорректно", Toast.LENGTH_SHORT).show()
