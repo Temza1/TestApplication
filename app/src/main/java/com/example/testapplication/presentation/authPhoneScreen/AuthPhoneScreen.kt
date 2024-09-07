@@ -29,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.testapplication.ui.theme.TestApplicationTheme
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
@@ -43,21 +44,14 @@ import java.util.regex.Pattern
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AuthPhoneScreen(
-    modifier: Modifier = Modifier,
-    navController: NavController,
-    viewModel: AuthPhoneScreenViewModel = viewModel()
+    startCheckCodeScreen: (String) -> Unit,
+    viewModel: AuthPhoneScreenViewModel = hiltViewModel()
 ) {
     val state by viewModel.state.collectAsState()
     AuthPhoneScreenContent(
-        modifier,
+        modifier = Modifier,
         state,
-        startCheckCodeScreen = {
-            navController.navigate(
-                route = Screen.AuthCodeCheckScreen.passPhone(
-                    it
-                )
-            )
-        },
+        startCheckCodeScreen = startCheckCodeScreen,
         sendPhoneOnClick = { viewModel.sendEvent(AuthPhoneScreenContract.Event.SendPhone(it)) }
     )
 
@@ -72,10 +66,7 @@ fun AuthPhoneScreenContent(
     sendPhoneOnClick: (String) -> Unit
 ) {
     var phone by remember { mutableStateOf("") }
-    var countryCode by remember {
-        mutableStateOf("")
-    }
-    val regex = "([+]7)([0-9]{10})"
+    var countryCode by remember { mutableStateOf("") }
     val context = LocalContext.current
 
     if (state.isAuthPhoneSuccess) {

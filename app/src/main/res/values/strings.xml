@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">TestApplication</string>
     <string name="feature_auth">FeatureAuth</string>
+    <string name="feature_code_check">FeatureChat</string>
     <string name="feature_register">FeatureRegister</string>
     <string name="feature_chat">FeatureChat</string>
     <string name="feature_profile">FeatureProfile</string>

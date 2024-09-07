@@ -27,26 +27,27 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.testapplication.navigation.Screen
 import com.example.testapplication.presentation.authPhoneScreen.AuthPhoneScreenContract
+import com.example.testapplication.presentation.authPhoneScreen.AuthPhoneScreenViewModel
 import com.example.testapplication.ui.theme.TestApplicationTheme
 
 @Composable
 fun RegistrationScreen(
-    modifier: Modifier = Modifier,
-    viewModel: RegScreenViewModel = viewModel(),
-    phone : String,
-    navController : NavController
+    viewModel: RegScreenViewModel = hiltViewModel(),
+    onRegSuccess: () -> Unit,
+    phone : String
 ) {
     val state by viewModel.state.collectAsState()
     RegScreenContent(
-        modifier,
+        modifier = Modifier,
         state = state,
-        phone,
-        startAuthPhoneScreen = {navController.navigate(route = Screen.AuthPhoneScreen.route)},
-        sendUsername = {viewModel.sendEvent(RegScreenContract.Event.SendUsername(it.first,it.second,it.third))}
+        onRegSuccess = onRegSuccess,
+        sendUsername = {viewModel.sendEvent(RegScreenContract.Event.SendUsername(it.first,it.second,it.third))},
+        phone
     )
 }
 
@@ -54,14 +55,25 @@ fun RegistrationScreen(
 fun RegScreenContent(
     modifier: Modifier = Modifier,
     state : RegScreenContract.State,
-    phone : String,
-    startAuthPhoneScreen:() -> Unit,
-    sendUsername:(Triple<String,String,String>) -> Unit
+    onRegSuccess:() -> Unit,
+    sendUsername:(Triple<String,String,String>) -> Unit,
+    phone : String
 ) {
     var nickname by remember { mutableStateOf("") }
     var username by remember { mutableStateOf("") }
+    val numberPhone by remember { mutableStateOf(phone) }
     var isButtonClicked by remember { mutableStateOf(false) }
     val context = LocalContext.current
+
+    if(state.isRegSuccess) {
+        onRegSuccess()
+    } else {
+        if(isButtonClicked) {
+            Toast.makeText(context, "в разработке", Toast.LENGTH_SHORT).show()
+        }
+        isButtonClicked = false
+    }
+
 
     Column(
         modifier = modifier
@@ -113,7 +125,9 @@ fun RegScreenContent(
                 .height(80.dp)
                 .padding(0.dp, 12.dp, 0.dp, 0.dp),
             onClick = {
-                Toast.makeText(context, "в разработке", Toast.LENGTH_SHORT).show()
+                sendUsername(Triple(phone,nickname,username))
+                isButtonClicked = true
+//                Toast.makeText(context, "в разработке", Toast.LENGTH_SHORT).show()
             }) {
             Text(text = "Продолжить", fontSize = 24.sp, fontWeight = FontWeight.Medium)
         }
@@ -126,8 +140,8 @@ fun RegistrationScreenPreview() {
     TestApplicationTheme {
         RegScreenContent(
             state = RegScreenContract.State(),
+            onRegSuccess = {},
             phone = "",
-            startAuthPhoneScreen = {},
             sendUsername = {}
         )
     }

@@ -27,6 +27,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.testapplication.navigation.Screen
@@ -36,19 +37,20 @@ import com.example.testapplication.ui.theme.TestApplicationTheme
 
 @Composable
 fun AuthCodeCheckScreen(
-    modifier: Modifier = Modifier,
-    viewModel: AuthCodeCheckScreenViewModel = viewModel(),
-    phone : String,
-    navController: NavController
+    startRegScreen: (String) -> Unit,
+    startChatListScreen: () -> Unit,
+    viewModel: AuthCodeCheckScreenViewModel = hiltViewModel(),
+    phone : String
 ) {
     val state by viewModel.state.collectAsState()
     AuthCodeCheckScreenContent(
-        modifier,
-        startRegScreen = {navController.navigate(route = Screen.RegistrationScreen.passPhone(it))},
-        startChatListScreen = {navController.navigate(route = Screen.AuthCodeCheckScreen.route)},
+        modifier = Modifier,
+        startRegScreen = startRegScreen,
+        startChatListScreen = startChatListScreen,
         sendPhoneAndCode = {viewModel.sendEvent(AuthCodeCheckScreenContract.Event.SendCode(it.first,it.second))},
-        state,
-        phone)
+        state = state,
+        phone
+        )
 }
 
 @Composable
@@ -125,8 +127,8 @@ fun VerificationScreenPreview() {
             startRegScreen = {},
             startChatListScreen = {},
             state = AuthCodeCheckScreenContract.State(),
-            phone = "",
-            sendPhoneAndCode = {}
+            sendPhoneAndCode = {},
+            phone = ""
         )
     }
 }
