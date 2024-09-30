@@ -32,4 +32,4 @@
 
 ## Исходное задание
 
-Подробности задания можно найти [здесь]([https://github.com/appKODE/trainee-test-android](https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FrJw6VACcSEZdAqFEPmzx6YQ%2FRqPKIvtjz2mK4WW12CnkQxCQ6xMUlolA%2BbxTmJU3RAX03HPYQxcN%2B1YRYcCtZw%3D%3D&name=Android.%20Тестовое%20задание.docx&nosw=1)).
+Подробности задания можно найти [здесь]((https://docs.yandex.ru/docs/view?url=ya-disk-public%3A%2F%2FrJw6VACcSEZdAqFEPmzx6YQ%2FRqPKIvtjz2mK4WW12CnkQxCQ6xMUlolA%2BbxTmJU3RAX03HPYQxcN%2B1YRYcCtZw%3D%3D&name=Android.%20Тестовое%20задание.docx&nosw=1)).
