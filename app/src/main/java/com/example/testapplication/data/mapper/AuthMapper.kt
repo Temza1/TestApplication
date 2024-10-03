@@ -10,9 +10,9 @@ import com.example.testapplication.domain.model.Username
 class AuthMapper {
     fun mapDtoTokenToDomainToken(tokenDto: TokenDto): Token {
         val domainToken = Token(
-            tokenDto.accessToken,
-            tokenDto.refreshToken,
-            tokenDto.userId,
+            tokenDto.accessToken ?: "default",
+            tokenDto.refreshToken ?: "default",
+            tokenDto.userId.default(-1),
             tokenDto.isUserExist
         )
         return domainToken

@@ -28,9 +28,11 @@ class AuthPhoneScreenViewModel @Inject constructor(
             is AuthPhoneScreenContract.Event.SendPhone -> sendPhone(event.phone)
             else -> {}
         }
+
     }
 
-    private fun sendPhone(phone: String) {
+
+        private fun sendPhone(phone: String) {
         viewModelScope.launch {
             val boolean = sendPhoneUseCase.invoke(phone)
             if (boolean) {

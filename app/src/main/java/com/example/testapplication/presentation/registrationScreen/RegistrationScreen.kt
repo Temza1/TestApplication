@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -68,10 +67,9 @@ fun RegScreenContent(
     if(state.isRegSuccess) {
         onRegSuccess()
     } else {
-        if(isButtonClicked) {
-            Toast.makeText(context, "в разработке", Toast.LENGTH_SHORT).show()
+        if(state.error != null) {
+            Toast.makeText(context, state.error, Toast.LENGTH_SHORT).show()
         }
-        isButtonClicked = false
     }
 
 

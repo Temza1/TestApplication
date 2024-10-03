@@ -23,4 +23,16 @@ sealed class Screen(val route: String) {
             return this.route.replace(oldValue = "{$DETAIL_ARGUMENT_KEY}", newValue = phone)
         }
     }
+
+    data object ChatListScreen : Screen(
+        route = "chat_list_screen"
+    )
+
+    data object ChatScreen : Screen(
+        route = "chat_screen"
+    )
+
+    data object ProfileScreen : Screen(
+        route = "profile_screen"
+    )
 }

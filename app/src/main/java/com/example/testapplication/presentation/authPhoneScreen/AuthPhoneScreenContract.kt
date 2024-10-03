@@ -8,7 +8,7 @@ interface AuthPhoneScreenContract {
     }
 
     data class State(
-        val isAuthPhoneSuccess: Boolean = false,
+        val isAuthPhoneSuccess: Boolean = false
     )
 
     interface ViewModel {

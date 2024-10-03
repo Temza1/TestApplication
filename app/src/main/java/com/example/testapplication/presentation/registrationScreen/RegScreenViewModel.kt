@@ -3,6 +3,7 @@ package com.example.testapplication.presentation.registrationScreen
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.testapplication.data.handleErrorNetwork.ApiStatus
 import com.example.testapplication.domain.useCases.SendCodeUseCase
 import com.example.testapplication.domain.useCases.SendPhoneUseCase
 import com.example.testapplication.domain.useCases.SendUsernameUseCase
@@ -32,9 +33,18 @@ class RegScreenViewModel @Inject constructor(
 
     private fun sendUsername(phone : String,name : String, username : String) {
         viewModelScope.launch {
-            val isRegSuccess = sendUsernameUseCase.invoke(phone, name, username)
-            if(isRegSuccess) {
-                _state.value = _state.value.copy(isRegSuccess = true)
+            sendUsernameUseCase.invoke(phone, name, username).collect { result ->
+                when (result.status) {
+                    ApiStatus.SUCCESS -> {
+                        _state.value = _state.value.copy(isRegSuccess = true)
+                    }
+                    ApiStatus.ERROR -> {
+                        _state.value = _state.value.copy(error = result.message)
+                    }
+                    else -> {
+                        _state.value = _state.value.copy(isLoading = true)
+                    }
+                }
             }
         }
     }

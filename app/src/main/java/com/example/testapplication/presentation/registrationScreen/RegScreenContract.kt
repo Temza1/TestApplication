@@ -8,7 +8,9 @@ interface RegScreenContract {
     }
 
     data class State(
-        val isRegSuccess : Boolean = false
+        val isRegSuccess : Boolean = false,
+        val isLoading: Boolean = false,
+        val error: String? = null
     )
 
     interface ViewModel {

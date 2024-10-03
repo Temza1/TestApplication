@@ -1,21 +1,16 @@
 package com.example.testapplication.navigation
 
-import android.os.Bundle
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.util.trace
-import androidx.navigation.NamedNavArgument
-import androidx.navigation.NavArgument
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
-import androidx.navigation.NavType
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
-import androidx.navigation.navArgument
 import androidx.navigation.navOptions
+import com.example.testapplication.presentation.chatListScreen.navigateToChatList
 import com.example.testapplication.presentation.authCodeCheckScreen.navigateToCodeCheck
 import com.example.testapplication.presentation.authPhoneScreen.navigation.navigateToAuthPhone
 import com.example.testapplication.presentation.registrationScreen.navigation.navigateToReg
@@ -75,7 +70,7 @@ class TestApplicationState(
                 TopLevelDestination.AUTH -> navController.navigateToAuthPhone(topLevelNavOptions)
                 TopLevelDestination.CODECHECK -> navController.navigateToCodeCheck(getStringNavArgument(DETAIL_ARGUMENT_KEY),topLevelNavOptions)
                 TopLevelDestination.REGISTER -> navController.navigateToReg(getStringNavArgument(DETAIL_ARGUMENT_KEY),topLevelNavOptions)
-                TopLevelDestination.CHAT -> TODO()
+                TopLevelDestination.CHAT -> navController.navigateToChatList(topLevelNavOptions)
                 TopLevelDestination.PROFILE -> TODO()
             }
         }

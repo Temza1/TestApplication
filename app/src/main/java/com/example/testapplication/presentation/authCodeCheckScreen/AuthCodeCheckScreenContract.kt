@@ -8,7 +8,9 @@ interface AuthCodeCheckScreenContract {
     }
 
     data class State(
-        val isAuthorized: Boolean = false
+        val isAuthorized: Boolean = false,
+        val isLoading: Boolean = false,
+        val error: String? = null
     )
 
     interface ViewModel {

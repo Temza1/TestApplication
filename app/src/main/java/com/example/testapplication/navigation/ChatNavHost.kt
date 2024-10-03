@@ -2,10 +2,10 @@ package com.example.testapplication.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
-import androidx.navigation.navArgument
 import androidx.navigation.navOptions
+import com.example.testapplication.presentation.chatListScreen.chatListScreen
+import com.example.testapplication.presentation.chatListScreen.navigateToChatList
 import com.example.testapplication.presentation.authCodeCheckScreen.authCodeCheckScreen
 import com.example.testapplication.presentation.authCodeCheckScreen.navigateToCodeCheck
 import com.example.testapplication.presentation.authPhoneScreen.navigation.authPhoneScreen
@@ -32,11 +32,15 @@ fun ChatNavHost(
         )
         authCodeCheckScreen(
             onAuthCodeCheckFail = {(navController::navigateToReg)(it, navOptions { })},
-            onAuthCodeCheckSuccess = {}
+            onAuthCodeCheckSuccess = {(navController::navigateToChatList)(navOptions { })}
         )
 
         registrationScreen(
             onRegSuccess = {(navController::navigateToAuthPhone)(navOptions { })}
+        )
+
+        chatListScreen(
+            onClickProfileButton = {}
         )
     }
 }
