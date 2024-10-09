@@ -9,38 +9,18 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9d0915f5-da05-44cd-b65e-b552a6a45d76" name="Changes" comment="перед переделкой навигации">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/handleErrorNetwork/ApiResult.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/handleErrorNetwork/ApiStatus.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/error/Detail.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/error/ErrorResponce.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/model/AuthResult.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/model/chats/ChatItem.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/model/chats/User.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/chatListScreen/ChatListNavigation.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/chatListScreen/ChatListScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/chatListScreen/components/ChatItem.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/chatScreen/ChatScreen.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/chatScreen/ChatScreenNavigation.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/profileScreen/ProfileScreen.kt" afterDir="false" />
+    <list default="true" id="9d0915f5-da05-44cd-b65e-b552a6a45d76" name="Changes" comment="перед доработкой дизайна и перехода с экрана проверки кода на chatListScreen">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/profileScreen/ProfileNavigation.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/mapper/AuthMapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/mapper/AuthMapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/error/ErrorResponce.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/model/error/ErrorResponce.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/repository/AuthRepositoryImpl.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/data/repository/AuthRepositoryImpl.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/model/Token.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/model/Token.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/repository/AuthRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/repository/AuthRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/useCases/SendCodeUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/useCases/SendCodeUseCase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/useCases/SendUsernameUseCase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/domain/useCases/SendUsernameUseCase.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/navigation/ChatNavHost.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/navigation/ChatNavHost.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/navigation/Screen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/navigation/Screen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/navigation/TestApplicationState.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/navigation/TestApplicationState.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreenContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreenContract.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreen.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreenViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/AuthCodeCheckScreenViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreenContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreenContract.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreenViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authPhoneScreen/AuthPhoneScreenViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegScreenContract.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegScreenContract.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegScreenViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegScreenViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegistrationScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/registrationScreen/RegistrationScreen.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/CodeCheckNavigation.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/authCodeCheckScreen/CodeCheckNavigation.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/chatListScreen/components/ChatItem.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/chatListScreen/components/ChatItem.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/profileScreen/ProfileScreen.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/testapplication/presentation/profileScreen/ProfileScreen.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -146,35 +126,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "ApkExportedModule": "TestApplication.app",
-    "ExportApk.ApkPathForTestApplication.app": "C:\\Users\\User\\AndroidStudioProjects\\TestApplication\\app",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "feature__auth",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/User/AndroidStudioProjects/TestApplication2/app/src/main/java/com/example/testapplication/presentation/chatScreen",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.0"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;ApkExportedModule&quot;: &quot;TestApplication.app&quot;,
+    &quot;ExportApk.ApkPathForTestApplication.app&quot;: &quot;C:\\Users\\User\\AndroidStudioProjects\\TestApplication\\app&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature__auth&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/AndroidStudioProjects/TestApplication2/app/src/main/java/com/example/testapplication/presentation/profileScreen&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ],
-    "kotlin-gradle-user-dirs": [
-      "C:\\Users\\User\\.gradle"
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;C:\\Users\\User\\.gradle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\User\AndroidStudioProjects\TestApplication2\app\src\main\java\com\example\testapplication\presentation\profileScreen" />
       <recent name="C:\Users\User\AndroidStudioProjects\TestApplication2\app\src\main\java\com\example\testapplication\presentation\chatScreen" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -361,7 +342,23 @@
       <option name="project" value="LOCAL" />
       <updated>1725706782078</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="перед доработкой экрана чата и профиля">
+      <option name="closed" value="true" />
+      <created>1727947367362</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1727947367362</updated>
+    </task>
+    <task id="LOCAL-00009" summary="перед доработкой экрана чата и профиля">
+      <option name="closed" value="true" />
+      <created>1727949367218</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1727949367219</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -382,7 +379,9 @@
     <MESSAGE value="перед доработкой хилта" />
     <MESSAGE value="перед доработкой запроса и перехода на след экран" />
     <MESSAGE value="перед переделкой навигации" />
-    <option name="LAST_COMMIT_MESSAGE" value="перед переделкой навигации" />
+    <MESSAGE value="перед доработкой экрана чата и профиля" />
+    <MESSAGE value="перед доработкой дизайна и перехода с экрана проверки кода на chatListScreen" />
+    <option name="LAST_COMMIT_MESSAGE" value="перед доработкой дизайна и перехода с экрана проверки кода на chatListScreen" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

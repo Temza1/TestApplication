@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.example.testapplication.R
 import com.example.testapplication.ui.theme.TestApplicationTheme
@@ -34,7 +35,7 @@ fun ChatItem(
             horizontalAlignment = Alignment.Start,
             verticalArrangement = Arrangement.SpaceBetween
         ) {
-            Text(text = "Название чата", fontWeight = FontWeight.Bold)
+            Text(text = "Название чата", fontWeight = FontWeight.Bold, fontSize = 18.sp)
             Text(text = "последнее сообщение")
         }
     }

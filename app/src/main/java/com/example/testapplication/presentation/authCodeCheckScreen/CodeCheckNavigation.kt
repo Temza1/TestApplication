@@ -26,7 +26,7 @@ fun NavGraphBuilder.authCodeCheckScreen(
         })
     ) {
         val phone = it.arguments?.getString(DETAIL_ARGUMENT_KEY).default("null")
-        AuthCodeCheckScreen(onAuthCodeCheckFail, onAuthCodeCheckSuccess,phone = phone)
+        AuthCodeCheckScreen(startRegScreen = onAuthCodeCheckFail, startChatListScreen = onAuthCodeCheckSuccess,phone = phone)
     }
 }
 

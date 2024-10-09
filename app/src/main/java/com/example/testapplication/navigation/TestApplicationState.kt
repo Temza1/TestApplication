@@ -13,6 +13,7 @@ import androidx.navigation.navOptions
 import com.example.testapplication.presentation.chatListScreen.navigateToChatList
 import com.example.testapplication.presentation.authCodeCheckScreen.navigateToCodeCheck
 import com.example.testapplication.presentation.authPhoneScreen.navigation.navigateToAuthPhone
+import com.example.testapplication.presentation.profileScreen.navigateToProfileScreen
 import com.example.testapplication.presentation.registrationScreen.navigation.navigateToReg
 import kotlinx.coroutines.CoroutineScope
 
@@ -71,7 +72,7 @@ class TestApplicationState(
                 TopLevelDestination.CODECHECK -> navController.navigateToCodeCheck(getStringNavArgument(DETAIL_ARGUMENT_KEY),topLevelNavOptions)
                 TopLevelDestination.REGISTER -> navController.navigateToReg(getStringNavArgument(DETAIL_ARGUMENT_KEY),topLevelNavOptions)
                 TopLevelDestination.CHAT -> navController.navigateToChatList(topLevelNavOptions)
-                TopLevelDestination.PROFILE -> TODO()
+                TopLevelDestination.PROFILE -> navController.navigateToProfileScreen(topLevelNavOptions)
             }
         }
     }

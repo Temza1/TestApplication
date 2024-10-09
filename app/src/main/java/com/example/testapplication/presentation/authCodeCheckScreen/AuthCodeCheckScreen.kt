@@ -65,15 +65,6 @@ fun AuthCodeCheckScreenContent(
     var code by remember { mutableStateOf("") }
     var isButtonClicked by remember { mutableStateOf(false) }
 
-    if(isButtonClicked) {
-        if (state.isAuthorized) {
-            startChatListScreen()
-        } else {
-            startRegScreen(phone)
-        }
-        isButtonClicked = false
-    }
-
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -112,7 +103,11 @@ fun AuthCodeCheckScreenContent(
                 .padding(0.dp, 12.dp, 0.dp, 0.dp),
             onClick = {
                 sendPhoneAndCode(Pair(phone,code))
-                isButtonClicked = true
+                    if (state.isAuthorized) {
+                        startChatListScreen()
+                    } else {
+                        startRegScreen(phone)
+                    }
             }) {
             Text(text = "Отправить")
         }

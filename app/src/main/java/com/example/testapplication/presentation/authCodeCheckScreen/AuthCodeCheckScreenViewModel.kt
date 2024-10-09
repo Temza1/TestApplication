@@ -34,7 +34,6 @@ class AuthCodeCheckScreenViewModel @Inject constructor(
 
     private fun sendCode(phone: String, code: String) {
         viewModelScope.launch {
-            _state.value = _state.value.copy(isLoading = true)
             sendCodeUseCase(phone, code)
                 .collect { result ->
                     when (result.status) {

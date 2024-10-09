@@ -10,6 +10,8 @@ import com.example.testapplication.presentation.authCodeCheckScreen.authCodeChec
 import com.example.testapplication.presentation.authCodeCheckScreen.navigateToCodeCheck
 import com.example.testapplication.presentation.authPhoneScreen.navigation.authPhoneScreen
 import com.example.testapplication.presentation.authPhoneScreen.navigation.navigateToAuthPhone
+import com.example.testapplication.presentation.profileScreen.navigateToProfileScreen
+import com.example.testapplication.presentation.profileScreen.profileScreen
 import com.example.testapplication.presentation.registrationScreen.navigation.navigateToReg
 import com.example.testapplication.presentation.registrationScreen.navigation.registrationScreen
 
@@ -36,11 +38,15 @@ fun ChatNavHost(
         )
 
         registrationScreen(
-            onRegSuccess = {(navController::navigateToAuthPhone)(navOptions { })}
+            onRegSuccess = {(navController::navigateToChatList)(navOptions { })}
         )
 
         chatListScreen(
-            onClickProfileButton = {}
+            onClickProfileButton = {(navController::navigateToProfileScreen)(navOptions { })}
+        )
+
+        profileScreen(
+            onClickReturn = {}
         )
     }
 }

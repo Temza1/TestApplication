@@ -9,12 +9,14 @@ import com.example.testapplication.data.mapper.AuthMapper
 import com.example.testapplication.data.model.CodeRequest
 import com.example.testapplication.data.model.PhoneRequest
 import com.example.testapplication.data.model.UsernameRequest
+import com.example.testapplication.data.model.error.Detail
 import com.example.testapplication.data.model.error.ErrorResponce
 import com.example.testapplication.domain.repository.AuthRepository
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import okhttp3.ResponseBody
 import org.json.JSONObject
 import retrofit2.Response
 import utils.NAME_PREFERENCE
@@ -60,8 +62,6 @@ class AuthRepositoryImpl @Inject constructor(
 //                putString(APP_PREF_ACCESS_TOKEN, result.accessToken)
 //                putString(APP_PREF_REFRESH_TOKEN, token.refreshToken)
 //            }
-        } else if(response.code() ==  400) {
-            ApiResult.Error("Такой пользователь уже зарегистрирован")
         } else {
             val errorMsg = response.errorBody()?.string() ?: run { response.code().toString() }
             response.errorBody()?.close()  // remember to close it after getting the stream of error body
@@ -84,10 +84,17 @@ class AuthRepositoryImpl @Inject constructor(
                 emit(Success(true))
             }
         } else {
-            val errorMsg = response.errorBody()!!.string()
-            response.errorBody()?.close()
-            emit(ApiResult.Error(errorMsg))
+            val gson = Gson()
+            val errorResponce = gson.fromJson(response.errorBody()?.string(), ErrorResponce::class.java)
+            response.errorBody()?.close()  // remember to close it after getting the stream of error body
+            emit(ApiResult.Error(errorResponce.detail.message))
         }
+    }
+
+    fun parseError(responseBody: ResponseBody): String {
+        val gson = Gson()
+        val errorResponse = gson.fromJson(responseBody.string(), Detail::class.java)
+        return errorResponse.message
     }
 
 //    fun <T> handleResponce(responce : Class<T>): ApiResult<T> {
